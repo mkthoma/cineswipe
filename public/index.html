@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CineSwipe — Discover Movies & TV</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+  <!-- Particle background canvas -->
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+  <!-- Ambient glow -->
+  <div class="ambient-glow" aria-hidden="true"></div>
+
+  <!-- App shell -->
+  <div id="app">
+
+    <header class="app-header" id="app-header">
+      <div class="header-left">
+        <span class="header-logo">Cine<span>Swipe</span></span>
+        <span class="header-session-title" id="session-title"></span>
+      </div>
+      <div class="header-right" id="header-right">
+        <button class="btn-theme-toggle" id="btn-theme">◑ Light</button>
+      </div>
+    </header>
+
+    <main class="app-main" id="app-main">
+      <!-- Views are injected here -->
+    </main>
+
+  </div>
+
+  <!-- Toast area -->
+  <div id="toast-area" aria-live="polite"></div>
+
+  <!-- Loading overlay — terminal window style -->
+  <div class="loading-overlay" id="loading-overlay" hidden>
+    <div class="loading-terminal">
+
+      <!-- macOS-style title bar -->
+      <div class="terminal-header">
+        <span class="td-dot td-dot-red"></span>
+        <span class="td-dot td-dot-yellow"></span>
+        <span class="td-dot td-dot-green"></span>
+        <span class="terminal-title-bar">cineswipe — ai-agent</span>
+        <span class="terminal-pid-badge" id="terminal-pid">PID 0000</span>
+      </div>
+
+      <div class="terminal-body">
+
+        <!-- Spinner + current stage -->
+        <div class="terminal-spinner-row">
+          <div class="spinner" aria-label="Loading">
+            <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle class="spinner-ring-outer" cx="40" cy="40" r="36" stroke="#c9a84c" stroke-width="2" stroke-dasharray="180 50" stroke-linecap="round"/>
+              <circle class="spinner-ring-inner" cx="40" cy="40" r="24" stroke="#8a7a5a" stroke-width="1.5" stroke-dasharray="100 50" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="terminal-stage-info">
+            <div class="terminal-stage-label" id="terminal-stage">Initialising…</div>
+            <div class="terminal-elapsed" id="terminal-elapsed">elapsed 0s</div>
+          </div>
+        </div>
+
+        <!-- MCP step log -->
+        <div class="loading-steps" id="loading-steps">
+          <div class="loading-step" data-step="0">
+            <span class="step-check">○</span>
+            <span class="step-label">manage_watchlist</span>
+          </div>
+          <div class="loading-step" data-step="1">
+            <span class="step-check">○</span>
+            <span class="step-label">fetch_recommendations</span>
+          </div>
+          <div class="loading-step" data-step="2">
+            <span class="step-check">○</span>
+            <span class="step-label">fetch_poster_image</span>
+          </div>
+          <div class="loading-step" data-step="3">
+            <span class="step-check">○</span>
+            <span class="step-label">push_to_ui</span>
+          </div>
+        </div>
+
+        <!-- Progress bar -->
+        <div class="terminal-progress-row">
+          <div class="loading-progress-bar">
+            <div class="loading-progress-fill" id="loading-progress-fill"></div>
+          </div>
+          <div class="loading-progress-text" id="loading-progress-text">0%</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
