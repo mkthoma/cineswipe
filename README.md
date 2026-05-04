@@ -5,6 +5,12 @@
 
 ---
 
+## 🎬 Demo video
+
+https://github.com/user-attachments/assets/3dc8abf3-510b-4974-ae50-6b5672704e78
+
+[Raw MP4](https://github.com/mkthoma/cineswipe/blob/main/assets/Cineswipe%20Demo.mp4)
+
 ## Screenshots
 
 | Onboarding | Swipe View |
